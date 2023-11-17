@@ -14,7 +14,14 @@ const app = express();
 const connectDB = require('./db/conn.js');
 
 app.use(express.json());
-app.use(cors()); // 'middleware' autorise les requêtes provenant de n'importe quel domaine.
+app.use(cors(
+    {
+        origin: ["*"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
+// 'middleware' autorise les requêtes provenant de n'importe quel domaine.
 
 // Connect Database
 connectDB();
